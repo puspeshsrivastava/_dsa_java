@@ -1,0 +1,22 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.Arrays;
+class Main {
+    public static void main(String[] args) {
+        int arr[]={1,2,3,4};
+        reverse(arr,arr.length);
+    }
+    
+    public static void reverse(int[] arr, int n) {
+        System.out.println(Arrays.toString(arr)+","+n);
+        if(n==arr.length/2 + 1){
+            System.out.println(Arrays.toString(arr));
+            return;
+        }
+        int t=arr[n-1];
+        arr[n-1]=arr[arr.length-n];
+        arr[arr.length-n]=t;
+        reverse(arr , n-1);
+    } 
+
+}

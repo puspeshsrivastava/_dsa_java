@@ -1,0 +1,29 @@
+class Solution {
+
+    boolean check_pal(String s, int left, int right) {
+        // Move left to next alphanumeric
+        while (left < right && !Character.isLetterOrDigit(s.charAt(left))) {
+            left++;
+        }
+
+        // Move right to previous alphanumeric
+        while (left < right && !Character.isLetterOrDigit(s.charAt(right))) {
+            right--;
+        }
+
+        // Base case: pointers crossed
+        if (left >= right) return true;
+
+        // Case-insensitive comparison
+        if (Character.toLowerCase(s.charAt(left)) != Character.toLowerCase(s.charAt(right))) {
+            return false;
+        }
+
+        // Recursive step
+        return check_pal(s, left + 1, right - 1);
+    }
+
+    public boolean isPalindrome(String s) {
+        return check_pal(s, 0, s.length() - 1);
+    }
+}
